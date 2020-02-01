@@ -5,4 +5,6 @@ t=spark.createDataFrame([Row('t1','s1','p1',3),Row('t2','s2','p2',4)],['transact
 sp = s.crossJoin(p)
 sp.join(t, on=['store_num', 'product_num'], how='left').select("location","name",F.when(t.transaction_num.isNull(), "NO").otherwise("YES").alias("status")).show()
 
-
+# r = sp.join(t, sp.store_num==t.store_num, how='left')
+# r = sp.join(t, sp.product_num == t.product_num, how='left')
+r = sp.join(t,[sp.store_num==t.store_num,sp.product_num == t.product_num], how='left')      # a list of on condition
