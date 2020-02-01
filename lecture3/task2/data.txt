@@ -1,0 +1,6 @@
+Applying a series of techniques intended to induce 
+detect and isolate lethal and or sterile temperature-sensitive mutants
+specific to the self-fertilizing hermaphrodite nematode Caenorhabditis elegans
+Bergerac strain, 25 such mutants have been found.  
+Optimal conditions for the application of mutagenic treatment 
+and the detection of such mutations are discussed
