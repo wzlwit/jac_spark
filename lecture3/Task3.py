@@ -24,6 +24,7 @@ if __name__ == "__main__":
     #     .appName("pyspark script job") \
     #     .getOrCreate()
 
+    spark.conf.set("Spar.driver.memory","1.5G")
 
     #Do all ETL here
     df1 = spark.read.csv("/home/s_kante/spark/data/agent_system.csv", header=True)
@@ -34,5 +35,6 @@ if __name__ == "__main__":
     
 
 # How to execute: (RUN in TERMINAL)
-spark-submit <file name>.py
+# TODO:
+# spark-submit <file name>.py
 
