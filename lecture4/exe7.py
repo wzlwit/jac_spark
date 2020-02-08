@@ -1,4 +1,3 @@
-
 from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 
@@ -19,4 +18,3 @@ context = StreamingContext.getOrCreate(checkpointDirectory, doYourOperations)
 
 context.start()             # Start the computation
 context.awaitTermination()
-

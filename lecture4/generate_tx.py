@@ -10,7 +10,7 @@ cnt=100000
 import socket
 import threading
 
-bind_ip = '0.0.0.0'
+bind_ip = '0.0.0.0'   # local
 bind_port = 9999
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

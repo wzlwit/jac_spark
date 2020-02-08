@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.appName("StructuredStreaming").getOrCreate()
-spark.sparkContext.setLogLevel('WARN')
+# spark.sparkContext.setLogLevel('WARN')
 
 lines = spark \
     .readStream \
@@ -19,6 +19,8 @@ query = df \
   .option("topic", "test") \
   .option("checkpointLocation", "./checkpoint") \
   .start()
+
+# todo: clear 'checkpoint'folder for debuging
 
 query.awaitTermination()
 

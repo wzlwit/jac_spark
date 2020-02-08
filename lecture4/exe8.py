@@ -9,7 +9,9 @@ lines = spark \
     .option("host", "localhost") \
     .option("port", 9999) \
     .load()
+# the above is a DataFrame
 
+# write stream into format
 query = lines \
     .writeStream \
     .outputMode("append") \

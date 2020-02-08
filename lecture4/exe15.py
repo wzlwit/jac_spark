@@ -32,7 +32,7 @@ joinedDf = streamingDf.join(productDf, "product_id").select("tx_id","product_id"
 
 aggDf = joinedDf.groupBy(window(joinedDf.timestamp, "2 minutes", "1 minutes"), joinedDf.product_id, joinedDf.name).agg(_sum("qty"), _sum("amt"))
 
-# What is 2 minutes and 1 minutes here?
+# What is 2 minutes and 1 minutes here? a: time_window and refresh frequence (every 1 minute)
 
 query = aggDf \
     .writeStream \
