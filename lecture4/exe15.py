@@ -21,10 +21,10 @@ productDf = spark.read.csv("./product.csv", mode="DROPMALFORMED", schema=product
 
 splittedClms = _split(lines.value, ",")
 combined_df = lines.withColumn("tx_id",splittedClms.getItem(0).cast("integer")) \
-     .withColumn("product_id",splittedClms.getItem(1).cast("integer")) \
-     .withColumn("qty",splittedClms.getItem(2).cast("integer")) \
-     .withColumn("amt",splittedClms.getItem(3).cast("integer")) \
-     .withColumn("day_dt",splittedClms.getItem(4).cast("string")) 
+    .withColumn("product_id",splittedClms.getItem(1).cast("integer")) \
+    .withColumn("qty",splittedClms.getItem(2).cast("integer")) \
+    .withColumn("amt",splittedClms.getItem(3).cast("integer")) \
+    .withColumn("day_dt",splittedClms.getItem(4).cast("string")) 
 
 streamingDf = combined_df.select("tx_id", "product_id", "qty", "amt", "day_dt", "timestamp")
 
