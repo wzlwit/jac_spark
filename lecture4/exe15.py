@@ -40,6 +40,8 @@ query = aggDf \
     .format("console") \
     .start()
 
+# 'complete' mean all the rows of input since start point, even it is not changed
+
 query.awaitTermination()
 
 #You need to start the python server by running generate_tx.py script
