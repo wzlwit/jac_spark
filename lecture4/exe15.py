@@ -30,7 +30,8 @@ streamingDf = combined_df.select("tx_id", "product_id", "qty", "amt", "day_dt", 
 
 joinedDf = streamingDf.join(productDf, "product_id").select("tx_id","product_id", "name", "qty", "amt", "timestamp")  # inner equi-join with a static DF
 
-aggDf = joinedDf.groupBy(window(joinedDf.timestamp, "2 minutes", "1 minutes"), joinedDf.product_id, joinedDf.name).agg(_sum("qty"), _sum("amt"))
+aggDf = joinedDf.groupBy(window(joinedDf.timestamp, "2 minutes", "1 minutes"), joinedDf.product_id, joinedDf.name).agg(_sum("qty"), _sum("amt")).sort(joinedDf.product_id)
+# TODO: .sort(joinedDf.columns[1])
 
 # What is 2 minutes and 1 minutes here? a: time_window and refresh frequence (every 1 minute)
 
@@ -38,7 +39,7 @@ query = aggDf \
     .writeStream \
     .outputMode("complete") \
     .format("console") \
-    .start()
+    .option("truncate", "false").start()
 
 # 'complete' mean all the rows of input since start point, even it is not changed
 
