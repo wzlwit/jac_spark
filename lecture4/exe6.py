@@ -13,7 +13,7 @@ lines = ssc.socketTextStream(sys.argv[1], 9999)
 keyValRdd = lines.map(lambda x: (x.split(",")[0],x))
 
 #Read product RDD in memory
-productRdd = sc.textFile("/mnt/d/gitrepo/big_data_course/Spark/lecture4/product.csv")
+productRdd = sc.textFile("/home/student/jac_spark/lecture4/product.csv")
 productKeyVal = productRdd.map(lambda x: (x.split(",")[0],x))
 
 #Join with dimension table to make sure we are excluding records not present in dimension table
@@ -23,7 +23,7 @@ joinedRdd = keyValRdd.transform(lambda rdd: rdd.join(productKeyVal))
 #(u'56', (u'11,56,10,6,2019-02-02 12:12:12', u'56,Polenta,2017-02-25,'))
 
 #Get only required fields and print the result for demo purpose
-finalRdd = joinedRdd.map(lambda x: x[1][0])
+finalRdd = joinedRdd.map(lambda x: x[1][0])   #x[1], 2nd column of each row (give a seq or tuple), x[1][0],the first element of each cell
 finalRdd.pprint()
 
 ssc.start()

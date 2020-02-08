@@ -8,7 +8,7 @@ ssc = StreamingContext(sc, 2)
 lines = ssc.socketTextStream("localhost", 9999)
 
 #lines.foreachRDD(lambda x : x.saveAsTextFile("/mnt/d/exe4"))
-lines.saveAsTextFiles("/mnt/d/exe4")
+lines.saveAsTextFiles("/home/student/ouptut/exe4")
 
 ssc.start()             # Start the computation
 ssc.awaitTermination() 

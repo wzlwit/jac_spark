@@ -16,5 +16,5 @@ ssc.start()
 ssc.awaitTermination()
 
 #How to run
-# spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.0 exe3.py <Host:Port of broker>
+# spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.0 exe3.py localhost
 #Note: Make sure to mention scala version name as well in package
